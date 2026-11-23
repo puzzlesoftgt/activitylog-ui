@@ -1,0 +1,77 @@
+@import "tailwindcss" source(none);
+
+@source "../views";
+@source "../js";
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+@theme {
+    --font-sans: "Inter", ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace;
+}
+
+[x-cloak] {
+    display: none !important;
+}
+
+html {
+    color-scheme: light;
+}
+
+html.dark {
+    color-scheme: dark;
+}
+
+@layer components {
+    .alu-card {
+        @apply rounded-xl border border-slate-200 bg-white shadow-sm dark:border-slate-800 dark:bg-slate-900;
+    }
+
+    .alu-card-title {
+        @apply flex items-center gap-2 px-5 py-4 text-sm font-semibold text-slate-900 dark:text-white;
+    }
+
+    .alu-label {
+        @apply mb-1.5 block text-xs font-semibold uppercase tracking-wide text-slate-500 dark:text-slate-400;
+    }
+
+    .alu-hint {
+        @apply mt-1.5 text-xs text-slate-400 dark:text-slate-500;
+    }
+
+    .alu-input {
+        @apply block w-full rounded-lg border border-slate-300 bg-white px-3 py-2 text-sm text-slate-800 shadow-sm outline-none transition placeholder:text-slate-400 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-500/20 dark:border-slate-700 dark:bg-slate-800 dark:text-slate-100 dark:placeholder:text-slate-500 dark:focus:border-indigo-400;
+    }
+
+    .alu-pill {
+        @apply inline-flex items-center gap-1.5 rounded-full border border-slate-200 bg-white px-2.5 py-1 text-xs font-medium text-slate-600 transition hover:border-slate-300 dark:border-slate-700 dark:bg-slate-800 dark:text-slate-300 dark:hover:border-slate-600;
+    }
+
+    .alu-btn-primary {
+        @apply inline-flex items-center gap-2 rounded-lg bg-indigo-600 px-3 py-2 text-sm font-medium text-white shadow-sm transition hover:bg-indigo-500 focus:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500 focus-visible:ring-offset-2 dark:focus-visible:ring-offset-slate-900;
+    }
+
+    .alu-btn-secondary {
+        @apply inline-flex items-center gap-2 rounded-lg border border-slate-200 bg-white px-3 py-2 text-sm font-medium text-slate-700 shadow-sm transition hover:bg-slate-50 focus:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500 dark:border-slate-700 dark:bg-slate-800 dark:text-slate-200 dark:hover:bg-slate-700;
+    }
+
+    .alu-btn-ghost {
+        @apply inline-flex items-center gap-1 rounded-md px-2 py-1 font-medium text-slate-500 transition hover:bg-slate-100 hover:text-slate-700 dark:text-slate-400 dark:hover:bg-slate-800 dark:hover:text-slate-200;
+    }
+
+    .alu-dl-row {
+        @apply grid grid-cols-3 gap-3 py-3 text-sm;
+    }
+
+    .alu-dl-row > dt {
+        @apply text-slate-500 dark:text-slate-400;
+    }
+
+    .alu-dl-row > dd {
+        @apply col-span-2 min-w-0 break-words text-slate-800 dark:text-slate-200;
+    }
+
+    html.alu-loading .alu-results {
+        @apply pointer-events-none opacity-60 transition-opacity;
+    }
+}

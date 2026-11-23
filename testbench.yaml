@@ -1,0 +1,27 @@
+laravel: '@testbench'
+
+providers:
+  - Spatie\Activitylog\ActivitylogServiceProvider
+  - Puzzlesoft\ActivitylogUi\ActivitylogUiServiceProvider
+  - Workbench\App\Providers\WorkbenchServiceProvider
+
+migrations:
+  - workbench/database/migrations
+
+env:
+  - APP_ENV=local
+  - APP_DEBUG=true
+  - DB_CONNECTION=sqlite
+  - CACHE_STORE=array
+  - SESSION_DRIVER=file
+  - AUTH_MODEL=Workbench\App\Models\User
+
+workbench:
+  start: '/activitylog'
+  install: false
+  build:
+    - create-sqlite-db
+    - db-wipe
+    - migrate-fresh:
+        --seed: true
+        --seeder: Workbench\Database\Seeders\DatabaseSeeder
